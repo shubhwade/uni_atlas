@@ -1,13 +1,21 @@
 {
   "buildCommand": "npm install --prefix abroadready",
   "installCommand": "npm install --prefix abroadready",
+  "framework": "express",
   "env": {
     "NODE_ENV": "production"
   },
   "functions": {
     "api/index.js": {
       "runtime": "nodejs18.x",
-      "maxDuration": 30
+      "maxDuration": 30,
+      "memory": 1024
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }

@@ -2,16 +2,12 @@ const express = require("express");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-
-const { getDB } = require("../abroadready/database/db");
-const { requireAuth, requireAdmin } = require("../abroadready/lib/middleware");
-const { securityHeaders, rateLimitMiddleware } = require("../abroadready/lib/security");
-const { errorHandler, notFoundHandler } = require("../abroadready/lib/errors");
-const { getLogger } = require("../abroadready/lib/logger");
 
 // Load environment variables
 require("dotenv").config({ path: path.join(__dirname, "../abroadready/.env") });
+
+const { securityHeaders, rateLimitMiddleware } = require("../abroadready/lib/security");
+const { errorHandler, notFoundHandler } = require("../abroadready/lib/errors");
 
 const app = express();
 
@@ -42,25 +38,35 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, "../abroadready/public")));
 app.use("/uploads", express.static(path.join(__dirname, "../abroadready/uploads")));
 
-// Re-export routes from original app
-app.use("/", require("../abroadready/routes/auth"));
-app.use("/api/admin", require("../abroadready/routes/admin"));
-app.use("/api/budgets", require("../abroadready/routes/budget"));
-app.use("/api/community", require("../abroadready/routes/community"));
-app.use("/api/countries", require("../abroadready/routes/countries"));
-app.use("/api/courses", require("../abroadready/routes/courses"));
-app.use("/api/finance", require("../abroadready/routes/finance"));
-app.use("/api/loans", require("../abroadready/routes/loans"));
-app.use("/api/notifications", require("../abroadready/routes/notifications"));
-app.use("/api/portfolios", requireAuth, require("../abroadready/routes/portfolio"));
-app.use("/api/predictions", require("../abroadready/routes/predictions"));
-app.use("/api/profile", require("../abroadready/routes/profile"));
-app.use("/api/resumes", require("../abroadready/routes/resumes"));
-app.use("/api/scholarships", require("../abroadready/routes/scholarships"));
-app.use("/api/shortlist", require("../abroadready/routes/shortlist"));
-app.use("/api/universities", require("../abroadready/routes/universities"));
+// Health check endpoint
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
+});
+
+// Import and mount all routes
+try {
+  app.use("/", require("../abroadready/routes/auth"));
+  app.use("/api/admin", require("../abroadready/routes/admin"));
+  app.use("/api/budgets", require("../abroadready/routes/budget"));
+  app.use("/api/community", require("../abroadready/routes/community"));
+  app.use("/api/countries", require("../abroadready/routes/countries"));
+  app.use("/api/courses", require("../abroadready/routes/courses"));
+  app.use("/api/finance", require("../abroadready/routes/finance"));
+  app.use("/api/loans", require("../abroadready/routes/loans"));
+  app.use("/api/notifications", require("../abroadready/routes/notifications"));
+  app.use("/api/portfolios", require("../abroadready/routes/portfolio"));
+  app.use("/api/predictions", require("../abroadready/routes/predictions"));
+  app.use("/api/profile", require("../abroadready/routes/profile"));
+  app.use("/api/resumes", require("../abroadready/routes/resumes"));
+  app.use("/api/scholarships", require("../abroadready/routes/scholarships"));
+  app.use("/api/shortlist", require("../abroadready/routes/shortlist"));
+  app.use("/api/universities", require("../abroadready/routes/universities"));
+} catch (err) {
+  console.error("Error loading routes:", err);
+}
 
 app.use(notFoundHandler);
 app.use(errorHandler);
 
+// Export as serverless handler
 module.exports = app;
