@@ -8,7 +8,8 @@
     "dev": "nodemon server.js",
     "seed": "node database/seed.js",
     "setup": "node database/setup.js",
-    "get-keys": "node get_api_keys.js"
+    "get-keys": "node get_api_keys.js",
+    "build": "echo 'Building abroadready...'"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

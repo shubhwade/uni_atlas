@@ -1,6 +1,5 @@
 {
-  "buildCommand": "cd abroadready && npm install",
-  "installCommand": "cd abroadready && npm install",
+  "buildCommand": "npm run build",
   "framework": "express",
   "env": {
     "NODE_ENV": "production"

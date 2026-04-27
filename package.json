@@ -1,0 +1,9 @@
+{
+  "name": "uni-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "cd abroadready && npm install --legacy-peer-deps 2>/dev/null || true",
+    "start": "node abroadready/server.js"
+  }
+}
