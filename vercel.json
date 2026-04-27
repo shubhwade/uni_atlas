@@ -1,0 +1,16 @@
+{
+  "buildCommand": "cd abroadready && npm install",
+  "installCommand": "npm install",
+  "framework": "express",
+  "functions": {
+    "abroadready/server.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/abroadready/server.js"
+    }
+  ]
+}
