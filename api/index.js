@@ -40,27 +40,49 @@ app.use("/uploads", express.static(path.join(__dirname, "../abroadready/uploads"
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
-  res.json({ status: "ok" });
+  res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+// Serve landing page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../abroadready/views/landing.html"));
 });
 
 // Import and mount all routes
 try {
-  app.use("/", require("../abroadready/routes/auth"));
-  app.use("/api/admin", require("../abroadready/routes/admin"));
-  app.use("/api/budgets", require("../abroadready/routes/budget"));
-  app.use("/api/community", require("../abroadready/routes/community"));
-  app.use("/api/countries", require("../abroadready/routes/countries"));
-  app.use("/api/courses", require("../abroadready/routes/courses"));
-  app.use("/api/finance", require("../abroadready/routes/finance"));
-  app.use("/api/loans", require("../abroadready/routes/loans"));
-  app.use("/api/notifications", require("../abroadready/routes/notifications"));
-  app.use("/api/portfolios", require("../abroadready/routes/portfolio"));
-  app.use("/api/predictions", require("../abroadready/routes/predictions"));
-  app.use("/api/profile", require("../abroadready/routes/profile"));
-  app.use("/api/resumes", require("../abroadready/routes/resumes"));
-  app.use("/api/scholarships", require("../abroadready/routes/scholarships"));
-  app.use("/api/shortlist", require("../abroadready/routes/shortlist"));
-  app.use("/api/universities", require("../abroadready/routes/universities"));
+  const authRoutes = require("../abroadready/routes/auth");
+  const adminRoutes = require("../abroadready/routes/admin");
+  const budgetRoutes = require("../abroadready/routes/budget");
+  const communityRoutes = require("../abroadready/routes/community");
+  const countriesRoutes = require("../abroadready/routes/countries");
+  const coursesRoutes = require("../abroadready/routes/courses");
+  const financeRoutes = require("../abroadready/routes/finance");
+  const loansRoutes = require("../abroadready/routes/loans");
+  const notificationsRoutes = require("../abroadready/routes/notifications");
+  const portfolioRoutes = require("../abroadready/routes/portfolio");
+  const predictionsRoutes = require("../abroadready/routes/predictions");
+  const profileRoutes = require("../abroadready/routes/profile");
+  const resumesRoutes = require("../abroadready/routes/resumes");
+  const scholarshipsRoutes = require("../abroadready/routes/scholarships");
+  const shortlistRoutes = require("../abroadready/routes/shortlist");
+  const universitiesRoutes = require("../abroadready/routes/universities");
+
+  app.use("/", authRoutes);
+  app.use("/api/admin", adminRoutes);
+  app.use("/api/budgets", budgetRoutes);
+  app.use("/api/community", communityRoutes);
+  app.use("/api/countries", countriesRoutes);
+  app.use("/api/courses", coursesRoutes);
+  app.use("/api/finance", financeRoutes);
+  app.use("/api/loans", loansRoutes);
+  app.use("/api/notifications", notificationsRoutes);
+  app.use("/api/portfolios", portfolioRoutes);
+  app.use("/api/predictions", predictionsRoutes);
+  app.use("/api/profile", profileRoutes);
+  app.use("/api/resumes", resumesRoutes);
+  app.use("/api/scholarships", scholarshipsRoutes);
+  app.use("/api/shortlist", shortlistRoutes);
+  app.use("/api/universities", universitiesRoutes);
 } catch (err) {
   console.error("Error loading routes:", err);
 }
