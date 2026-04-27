@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Notifications • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/notifications.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Notifications</h1>
+            <p class="muted">Deadlines, predictions, resume/portfolio completion, and alerts.</p>
+          </div>
+          <button class="btn sm" id="markRead" type="button">Mark all read</button>
+        </div>
+        <div class="spacer"></div>
+        <section id="list" class="grid"></section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/notifications.js"></script>
+  </body>
+</html>
+

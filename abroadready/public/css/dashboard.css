@@ -1,0 +1,39 @@
+.completenessWrap{
+  width:64px;
+  height:64px;
+  position:relative;
+}
+.chartWrap{margin-top:20px;height:240px;position:relative}
+.stats{gap:10px}
+.list{display:grid;gap:10px;margin-top:10px}
+.list .item{
+  padding:12px;
+  border-radius:16px;
+  border:2px solid var(--border);
+  background:#fff;
+  box-shadow:3px 3px 0 var(--border);
+}
+
+/* Resume section on dashboard */
+#resumeSection a.card{
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+#resumeSection a.card:hover{
+  transform:translate(2px,2px);
+  box-shadow:2px 2px 0 var(--border);
+}
+
+/* Missing fields tags */
+.missingTags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+  min-height:28px;
+}
+
+@media (max-width: 980px){
+  #resumeSection.grid.cols-3{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width: 560px){
+  #resumeSection.grid.cols-3{grid-template-columns:1fr}
+}

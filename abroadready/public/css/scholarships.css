@@ -1,0 +1,2 @@
+.filters{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:10px}
+@media (max-width:980px){.filters{grid-template-columns:1fr}}

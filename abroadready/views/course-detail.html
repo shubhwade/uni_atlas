@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Course - AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/course-detail.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1" id="title">Course</h1>
+            <p class="muted" id="sub">Loading...</p>
+          </div>
+          <div class="row wrap">
+            <button class="btn sm" id="saveBtn" type="button">Save</button>
+            <button class="btn primary sm" id="predictBtn" type="button">Run prediction</button>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="grid cols-2">
+          <div class="card pad" id="details"></div>
+          <div class="card pad">
+            <div class="h2">Crowdsourced outcomes</div>
+            <div class="caption muted">Anonymized admits and rejects used to calibrate predictions.</div>
+            <div class="spacer"></div>
+            <div class="table-wrap">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>GPA</th>
+                    <th>GRE</th>
+                    <th>Work yrs</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="crowd"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="h2">Prediction result</div>
+          <div class="caption muted">Runs the AI and baseline model. Results are saved to your account.</div>
+          <div class="spacer"></div>
+          <div id="predOut" class="grid"></div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/course-detail.js"></script>
+  </body>
+</html>

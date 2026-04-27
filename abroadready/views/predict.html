@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Predict • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/predict.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <h1 class="h1">AI admit predictor</h1>
+        <p class="muted">Pick up to 10 courses. We run a calibrated model and return categories.</p>
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="grid cols-2">
+            <div>
+              <label class="caption">Search courses</label>
+              <input class="input" id="courseSearch" placeholder="Type to search…" />
+              <div class="spacer"></div>
+              <div id="courseResults" class="grid"></div>
+            </div>
+            <div>
+              <label class="caption">Selected (max 10)</label>
+              <div class="spacer"></div>
+              <div id="selected" class="grid"></div>
+              <div class="spacer"></div>
+              <button class="btn primary" id="runAll" type="button">Run all predictions</button>
+            </div>
+          </div>
+        </section>
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="h2">Results</div>
+          <div class="spacer"></div>
+          <div id="results" class="grid cols-2"></div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/predict.js"></script>
+  </body>
+</html>
+

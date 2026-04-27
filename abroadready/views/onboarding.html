@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Onboarding • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/onboarding.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Onboarding</h1>
+            <p class="muted">6 quick steps. Each step autosaves.</p>
+          </div>
+          <div class="badge info" id="stepBadge">Step 1 / 6</div>
+        </div>
+
+        <div class="progress card" aria-hidden="true">
+          <div class="progress__bar" id="progressBar"></div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="card pad" id="wizard">
+          <div class="tabs" id="stepTabs"></div>
+
+          <div class="spacer"></div>
+
+          <div id="stepPanels">
+            <div class="panel" data-step="1">
+              <h2 class="h2">Academics</h2>
+              <div class="spacer"></div>
+              <div class="grid cols-2">
+                <div>
+                  <label class="caption">Bachelor’s University</label>
+                  <input class="input" name="bachelors_university" />
+                </div>
+                <div>
+                  <label class="caption">Field</label>
+                  <input class="input" name="bachelors_field" />
+                </div>
+                <div>
+                  <label class="caption">GPA</label>
+                  <input class="input" name="bachelors_gpa" type="number" step="0.01" />
+                </div>
+                <div>
+                  <label class="caption">Graduation year</label>
+                  <input class="input" name="bachelors_graduation_year" type="number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" data-step="2">
+              <h2 class="h2">Test scores</h2>
+              <div class="spacer"></div>
+              <div class="grid cols-3">
+                <div>
+                  <label class="caption">GRE total</label>
+                  <input class="input" name="gre_total" type="number" />
+                </div>
+                <div>
+                  <label class="caption">GRE quant</label>
+                  <input class="input" name="gre_quant" type="number" />
+                </div>
+                <div>
+                  <label class="caption">IELTS overall</label>
+                  <input class="input" name="ielts_overall" type="number" step="0.5" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" data-step="3">
+              <h2 class="h2">Work experience</h2>
+              <div class="spacer"></div>
+              <div class="grid cols-2">
+                <div>
+                  <label class="caption">Total work exp (months)</label>
+                  <input class="input" name="total_work_exp_months" type="number" />
+                </div>
+                <div>
+                  <label class="caption">Current role</label>
+                  <input class="input" name="current_role" />
+                </div>
+                <div>
+                  <label class="caption">Current employer</label>
+                  <input class="input" name="current_employer" />
+                </div>
+                <div>
+                  <label class="caption">Projects count</label>
+                  <input class="input" name="projects_count" type="number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" data-step="4">
+              <h2 class="h2">Targets</h2>
+              <div class="spacer"></div>
+              <div class="grid cols-2">
+                <div>
+                  <label class="caption">Target degree</label>
+                  <select class="select" name="target_degree">
+                    <option value="">Select</option>
+                    <option>MS</option>
+                    <option>MBA</option>
+                    <option>MEng</option>
+                    <option>PhD</option>
+                    <option>UG</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="caption">Target countries (comma separated codes)</label>
+                  <input class="input" name="target_countries" placeholder="usa,uk,canada" />
+                </div>
+                <div>
+                  <label class="caption">Target year</label>
+                  <input class="input" name="target_year" type="number" />
+                </div>
+                <div>
+                  <label class="caption">Budget total (lakhs)</label>
+                  <input class="input" name="budget_total_lakhs" type="number" step="0.1" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" data-step="5">
+              <h2 class="h2">Finances</h2>
+              <div class="spacer"></div>
+              <div class="grid cols-3">
+                <div>
+                  <label class="caption">Family income (LPA)</label>
+                  <input class="input" name="family_income_lpa" type="number" step="0.1" />
+                </div>
+                <div>
+                  <label class="caption">Savings (lakhs)</label>
+                  <input class="input" name="savings_lakhs" type="number" step="0.1" />
+                </div>
+                <div>
+                  <label class="caption">CIBIL score</label>
+                  <input class="input" name="cibil_score" type="number" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel" data-step="6">
+              <h2 class="h2">Upload resume</h2>
+              <p class="muted">PDF only, up to 5MB. Analysis runs in the background.</p>
+              <div class="spacer"></div>
+              <div class="upload card pad">
+                <input id="resumeFile" type="file" accept="application/pdf" />
+                <button class="btn primary" id="uploadBtn" type="button">Upload & analyze</button>
+                <div class="caption muted" id="uploadStatus"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="row" style="justify-content:space-between">
+            <button class="btn" id="prevBtn" type="button">Back</button>
+            <div class="row">
+              <button class="btn" id="saveBtn" type="button">Save</button>
+              <button class="btn primary" id="nextBtn" type="button">Next</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/js/global.js"></script>
+    <script src="/js/onboarding.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profile • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/profile.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Profile</h1>
+            <p class="muted">Edit your details. Stronger inputs → better predictions.</p>
+          </div>
+          <div class="row wrap">
+            <button class="btn sm" id="recomputeBtn" type="button">Recompute AI scores</button>
+            <a class="btn primary sm" href="/onboarding">Onboarding</a>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="card pad">
+          <div class="tabs" id="tabs"></div>
+          <div class="spacer"></div>
+          <div id="panels">
+            <div class="panel" data-tab="Academic">
+              <div class="grid cols-2">
+                <div><label class="caption">Bachelor’s University</label><input class="input" name="bachelors_university" placeholder="e.g. IIT Bombay" /></div>
+                <div>
+                  <label class="caption">University Tier</label>
+                  <select class="input" name="bachelors_university_tier">
+                    <option value="">Select Tier</option>
+                    <option value="tier1">Tier 1 (Top / Ivy League equivalent)</option>
+                    <option value="tier2">Tier 2 (Good Regional / State)</option>
+                    <option value="tier3">Tier 3 (Other / Local)</option>
+                  </select>
+                </div>
+                <div><label class="caption">Field</label><input class="input" name="bachelors_field" placeholder="e.g. Computer Science" /></div>
+                <div class="row" style="gap:10px">
+                  <div style="flex:2"><label class="caption">GPA</label><input class="input" name="bachelors_gpa" type="number" step="0.01" min="0" max="100" placeholder="Score" /></div>
+                  <div style="flex:1"><label class="caption">Scale</label><input class="input" name="bachelors_gpa_scale" type="number" min="4" max="100" placeholder="4/10/100" /></div>
+                </div>
+                <div><label class="caption">Graduation year</label><input class="input" name="bachelors_graduation_year" type="number" min="1990" max="2030" placeholder="YYYY" /></div>
+                <div><label class="caption">10th Percent/GPA</label><input class="input" name="tenth_percent" type="number" step="0.01" min="0" max="100" placeholder="e.g. 92.5" /></div>
+                <div><label class="caption">12th Percent/GPA</label><input class="input" name="twelfth_percent" type="number" step="0.01" min="0" max="100" placeholder="e.g. 88.0" /></div>
+                <div>
+                  <label class="caption">12th Stream</label>
+                  <select class="input" name="twelfth_stream">
+                    <option value="">Select Stream</option>
+                    <option value="science">Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="arts">Arts</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="panel" data-tab="Tests">
+              <div class="grid cols-3">
+                <div><label class="caption">GRE total</label><input class="input" name="gre_total" type="number" min="260" max="340" placeholder="260-340" /></div>
+                <div><label class="caption">GRE verbal</label><input class="input" name="gre_verbal" type="number" min="130" max="170" placeholder="130-170" /></div>
+                <div><label class="caption">GRE quant</label><input class="input" name="gre_quant" type="number" min="130" max="170" placeholder="130-170" /></div>
+                <div><label class="caption">GMAT total</label><input class="input" name="gmat_total" type="number" min="200" max="800" placeholder="200-800" /></div>
+                <div><label class="caption">GMAT Verbal</label><input class="input" name="gmat_verbal" type="number" min="6" max="60" placeholder="6-60" /></div>
+                <div><label class="caption">GMAT Quant</label><input class="input" name="gmat_quant" type="number" min="6" max="60" placeholder="6-60" /></div>
+                <div><label class="caption">IELTS overall</label><input class="input" name="ielts_overall" type="number" step="0.5" min="0" max="9" placeholder="0-9" /></div>
+                <div><label class="caption">TOEFL total</label><input class="input" name="toefl_total" type="number" min="0" max="120" placeholder="0-120" /></div>
+                <div><label class="caption">Duolingo</label><input class="input" name="duolingo_score" type="number" min="10" max="160" placeholder="10-160" /></div>
+              </div>
+            </div>
+            <div class="panel" data-tab="Work">
+              <div class="grid cols-2">
+                <div><label class="caption">Work exp (months)</label><input class="input" name="total_work_exp_months" type="number" min="0" max="600" placeholder="0-600" /></div>
+                <div><label class="caption">Current role</label><input class="input" name="current_role" placeholder="e.g. Software Engineer" /></div>
+                <div><label class="caption">Projects count</label><input class="input" name="projects_count" type="number" min="0" max="100" placeholder="Major projects" /></div>
+                <div><label class="caption">Research papers</label><input class="input" name="research_papers" type="number" min="0" max="50" placeholder="Published papers" /></div>
+                <div style="grid-column: span 2"><label class="caption">Awards & Honors</label><textarea class="input" name="awards_and_honors" placeholder="e.g. Dean's List, Hackathon Winner" rows="2"></textarea></div>
+                <div><label class="caption">Open source contribs</label><input class="input" name="open_source_contribs" type="number" min="0" max="1000" placeholder="PRs/Commits" /></div>
+                <div><label class="caption">GitHub URL</label><input class="input" name="github_url" placeholder="https://github.com/username" /></div>
+              </div>
+            </div>
+            <div class="panel" data-tab="Financial">
+              <div class="grid cols-3">
+                <div><label class="caption">Family income (LPA)</label><input class="input" name="family_income_lpa" type="number" step="0.1" min="0" max="5000" placeholder="Lakhs per annum" /></div>
+                <div><label class="caption">Savings (lakhs)</label><input class="input" name="savings_lakhs" type="number" step="0.1" min="0" max="5000" placeholder="Liquid savings" /></div>
+                <div><label class="caption">CIBIL</label><input class="input" name="cibil_score" type="number" min="300" max="900" placeholder="300-900" /></div>
+                <div><label class="caption">Property value (lakhs)</label><input class="input" name="property_value_lakhs" type="number" step="1" min="0" max="10000" placeholder="Collateral" /></div>
+                <div><label class="caption">Monthly EMIs (INR)</label><input class="input" name="existing_emis_monthly" type="number" step="1" min="0" max="1000000" placeholder="Existing debt" /></div>
+              </div>
+            </div>
+            <div class="panel" data-tab="Preferences">
+              <div class="grid cols-2">
+                <div>
+                  <label class="caption">Target Degree</label>
+                  <select class="input" name="target_degree">
+                    <option value="">Select Degree</option>
+                    <option value="MS">Master of Science (MS)</option>
+                    <option value="MBA">Master of Business Admin (MBA)</option>
+                    <option value="MA">Master of Arts (MA)</option>
+                    <option value="MEng">Master of Engineering (MEng)</option>
+                    <option value="PhD">PhD / Doctorate</option>
+                    <option value="Bachelors">Bachelors / UG</option>
+                  </select>
+                </div>
+                <div><label class="caption">Target fields</label><input class="input" name="target_fields" placeholder="e.g. AI, FinTech, Data Science" /></div>
+                <div><label class="caption">Target countries</label><input class="input" name="target_countries" placeholder="usa,uk,canada" /></div>
+                <div>
+                  <label class="caption">Target year</label>
+                  <select class="input" name="target_year">
+                    <option value="">Select Year</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                  </select>
+                </div>
+                <div><label class="caption">Max loan (lakhs)</label><input class="input" name="max_loan_lakhs" type="number" step="0.1" min="0" max="500" placeholder="e.g. 40" /></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer"></div>
+          <div class="row" style="justify-content:space-between">
+            <div class="caption muted" id="scoresNote"></div>
+            <div class="row wrap">
+              <button class="btn" id="improveBtn" type="button">Improve this section</button>
+              <button class="btn primary" id="saveBtn" type="button">Save</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/profile.js"></script>
+  </body>
+</html>
+

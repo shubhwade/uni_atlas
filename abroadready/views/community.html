@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/community.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Community</h1>
+            <p class="muted">Admit stories, loan reviews, visa tips, expense reports.</p>
+          </div>
+          <button class="btn primary sm" id="newPost" type="button">Write a post</button>
+        </div>
+        <div class="spacer"></div>
+        <section class="card pad filters">
+          <select class="select" id="cat">
+            <option value="">All categories</option>
+            <option>Admit Stories</option>
+            <option>Expense Reports</option>
+            <option>Loan Reviews</option>
+            <option>Visa Tips</option>
+            <option>Housing</option>
+            <option>General</option>
+          </select>
+          <input class="input" id="cc" placeholder="countryCode (e.g., usa)" />
+          <button class="btn" id="apply" type="button">Apply</button>
+        </section>
+        <div class="spacer"></div>
+        <section id="posts" class="grid"></section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/community.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Dashboard</h1>
+            <p class="muted">Your profile, admits, money, and deadlines — in one view.</p>
+          </div>
+          <div class="row wrap">
+            <span class="badge info" id="forexBadge">Loading…</span>
+            <a class="btn primary sm" href="/predict">Run predictions</a>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="grid cols-3">
+          <div class="card pad">
+            <div class="row" style="justify-content:space-between;align-items:center">
+              <div>
+                <div class="caption muted">Profile completeness</div>
+                <div class="h2" id="completePct">—</div>
+              </div>
+              <div class="completenessWrap">
+                <canvas id="completenessChart"></canvas>
+              </div>
+            </div>
+            <div class="spacer" style="height:10px"></div>
+            <div class="caption muted" style="margin-bottom:8px">Still missing</div>
+            <div id="missingTop" class="missingTags"></div>
+            <div class="spacer"></div>
+            <a class="btn sm full" href="/profile">Complete profile →</a>
+          </div>
+          <div class="card pad">
+            <div class="caption muted">AI profile score</div>
+            <div class="h2" id="profileScore">—</div>
+            <div class="chartWrap">
+              <canvas id="radarChart"></canvas>
+            </div>
+          </div>
+          <div class="card pad">
+            <div class="caption muted">Quick stats</div>
+            <div class="grid cols-3 stats">
+              <div><div class="h2" id="statResumes">—</div><div class="caption muted">Resumes</div></div>
+              <div><div class="h2" id="statPreds">—</div><div class="caption muted">Predictions</div></div>
+              <div><div class="h2" id="statSch">—</div><div class="caption muted">Matched</div></div>
+            </div>
+            <div class="spacer"></div>
+            <div class="caption muted">Action items</div>
+            <div id="actionItems" class="list"></div>
+          </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="grid cols-2">
+          <div class="card pad">
+            <div class="row" style="justify-content:space-between">
+              <div class="h2">Top scholarships</div>
+              <a class="btn sm" href="/scholarships">Browse</a>
+            </div>
+            <div class="spacer"></div>
+            <div id="topScholarships" class="grid"></div>
+          </div>
+          <div class="card pad">
+            <div class="row" style="justify-content:space-between">
+              <div class="h2">Recent predictions</div>
+              <a class="btn sm" href="/predict">Run</a>
+            </div>
+            <div class="spacer"></div>
+            <div id="recentPreds" class="grid"></div>
+          </div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="card pad">
+          <div class="row" style="justify-content:space-between;align-items:center">
+            <div>
+              <div class="h2">Resumes</div>
+              <div class="caption muted">AI-scored PDFs used in admit predictions</div>
+            </div>
+            <a class="btn primary sm" href="/resume">Upload / Manage</a>
+          </div>
+          <div class="spacer"></div>
+          <div id="resumeSection" class="grid cols-3"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>
+

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shortlist • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/shortlist.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:center">
+          <div>
+            <h1 class="h1">My Shortlist</h1>
+            <p class="muted">Manage your university applications. Drag and drop to update status.</p>
+          </div>
+          <button class="btn primary" id="openSearchBtn" type="button">+ Search Global Universities</button>
+        </div>
+        <div class="spacer"></div>
+        <section class="kanban" id="kanban"></section>
+      </div>
+    </main>
+
+    <!-- Global Search Modal -->
+    <div class="modal-overlay" id="uniSearchModal">
+      <div class="modal" style="max-width:600px">
+        <div class="modal__head">
+          <div class="h3">Search Global Universities</div>
+          <button class="btn sm" id="closeSearchBtn" type="button">Close</button>
+        </div>
+        <div class="modal__body">
+          <div class="row" style="gap:0.5rem">
+            <input class="input" id="globalUniInput" placeholder="Enter university name..." />
+            <button class="btn" id="doGlobalSearch">Search</button>
+          </div>
+          <div class="spacer"></div>
+          <div id="globalUniResults" class="grid" style="grid-template-columns: 1fr; max-height: 400px; overflow-y: auto;"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/shortlist.js"></script>
+  </body>
+</html>
+

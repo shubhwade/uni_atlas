@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfolio • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/portfolio.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <h1 class="h1">Portfolio analyzer</h1>
+        <p class="muted">Firecrawl scrape + screenshot → GPT analysis.</p>
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="row wrap">
+            <input class="input" id="url" placeholder="https://your-portfolio.com" />
+            <button class="btn primary" id="analyze" type="button">Analyze</button>
+          </div>
+          <div class="spacer"></div>
+          <div class="caption muted" id="status"></div>
+        </section>
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="h2">Result</div>
+          <div class="spacer"></div>
+          <div id="out" class="grid"></div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/portfolio.js"></script>
+  </body>
+</html>
+

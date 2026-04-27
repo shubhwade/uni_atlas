@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AbroadReady - Admissions and finance planning</title>
+    <meta
+      name="description"
+      content="Admissions, scholarship, budget, and loan planning for Indian students applying abroad."
+    />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    <link rel="stylesheet" href="/css/landing.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Primary">
+        <a class="brand" href="/" aria-label="AbroadReady home">
+          <span class="brand__icon" aria-hidden="true">
+            <span></span>
+          </span>
+          <span>AbroadReady</span>
+        </a>
+
+        <button class="nav__toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav__links" data-nav-links>
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#why">Why us?</a>
+          <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="nav__actions">
+          <a class="link-btn" href="/login">Login</a>
+          <a class="btn btn--dark" href="/register">Get Started</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="shell hero__grid">
+          <div class="hero__copy">
+            <div class="rating-pill">
+              <span>Admissions planning with data, not guesswork</span>
+            </div>
+            <h1>Plan your study-abroad decision without getting stuck.</h1>
+            <p class="hero__lead">
+              AbroadReady helps Indian students score profiles, compare universities, predict admits, match
+              scholarships, and understand the true cost of loans before applying.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--dark btn--lg" href="/register">Start free</a>
+              <a class="btn btn--light btn--lg" href="/login">Sign in</a>
+              <a class="btn btn--google btn--lg" href="/auth/google">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                  <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/>
+                  <path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/>
+                  <path d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+                  <path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/>
+                </svg>
+                Continue with Google
+              </a>
+            </div>
+            <div class="hero__proof">
+              <span>No credit card</span>
+              <span>Fast onboarding</span>
+              <span>Private workspace</span>
+            </div>
+          </div>
+
+          <div class="hero__visual" aria-label="Admissions dashboard preview">
+            <div class="bee-card">
+              <div class="bee-card__top">
+                <div class="bee-face" aria-hidden="true">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div>
+                  <strong>Readiness API</strong>
+                  <small>Live profile analysis</small>
+                </div>
+              </div>
+              <pre><code>POST /predict-admit
+{
+  "country": "US",
+  "program": "MS CS",
+  "gre_quant": 165,
+  "budget_lakhs": 58
+}</code></pre>
+              <div class="score-row">
+                <span>Profile score</span>
+                <strong>82%</strong>
+              </div>
+              <div class="meter"><span style="width:82%"></span></div>
+              <div class="mini-grid">
+                <div>
+                  <strong>14</strong>
+                  <span>Scholarships</span>
+                </div>
+                <div>
+                  <strong>6</strong>
+                  <span>Safe picks</span>
+                </div>
+                <div>
+                  <strong>₹42L</strong>
+                  <span>Loan gap</span>
+                </div>
+              </div>
+            </div>
+            <div class="floating-tag floating-tag--one">Admit odds ready</div>
+            <div class="floating-tag floating-tag--two">Budget risk low</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="ticker">
+        <div class="ticker__inner">
+          <span>Harvard University</span>
+          <span>Stanford University</span>
+          <span>MIT</span>
+          <span>Oxford University</span>
+          <span>Cambridge University</span>
+          <span>Yale University</span>
+          <span>Princeton University</span>
+          <span>Caltech</span>
+          <span>UCLA</span>
+          <span>Georgia Tech</span>
+          <!-- Duplicate for seamless loop -->
+          <span>Harvard University</span>
+          <span>Stanford University</span>
+          <span>MIT</span>
+          <span>Oxford University</span>
+          <span>Cambridge University</span>
+          <span>Yale University</span>
+          <span>Princeton University</span>
+          <span>Caltech</span>
+          <span>UCLA</span>
+          <span>Georgia Tech</span>
+        </div>
+      </div>
+
+      <section id="features" class="section section--cream">
+        <div class="shell">
+          <div class="section__head">
+            <span class="eyebrow">Everything in one place</span>
+            <h2>Built like a developer tool, shaped for applicants.</h2>
+            <p>
+              Every page is designed to move a student from uncertainty to a defensible shortlist, budget, and
+              application plan.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon">AI</div>
+              <h3>Resume intelligence</h3>
+              <p>Upload a resume and get profile gaps, ATS signals, and specific next actions.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">%</div>
+              <h3>Admit prediction</h3>
+              <p>Estimate chances for courses using academics, tests, projects, work, and budget fit.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">₹</div>
+              <h3>Loan planning</h3>
+              <p>Understand repayment, break-even salary, and monthly risk before committing.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">↗</div>
+              <h3>Shortlist workflow</h3>
+              <p>Compare universities, deadlines, scholarships, living costs, and decision notes.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">★</div>
+              <h3>Scholarship matching</h3>
+              <p>Rank awards by eligibility, deadline pressure, and practical application fit.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon">{ }</div>
+              <h3>Clean data layer</h3>
+              <p>Fast API-backed pages with predictable filters, tables, and saved student data.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="shell split">
+          <div>
+            <span class="eyebrow">How it works</span>
+            <h2>From profile to decision plan in minutes.</h2>
+            <p class="section-copy">
+              The flow is intentionally simple: answer the important questions once, then use them everywhere:
+              predictions, scholarships, budgets, and country comparisons.
+            </p>
+            <a class="btn btn--dark" href="/register">Build my profile</a>
+          </div>
+          <div class="steps-card">
+            <div class="step">
+              <span>1</span>
+              <div>
+                <h3>Create your profile</h3>
+                <p>Academics, tests, work, target country, and budget.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span>2</span>
+              <div>
+                <h3>Run predictions</h3>
+                <p>See reach, target, and safe options with clear reasons.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span>3</span>
+              <div>
+                <h3>Lock the plan</h3>
+                <p>Shortlist universities, scholarships, loan scenarios, and deadlines.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="section section--yellow">
+        <div class="shell">
+          <div class="section__head">
+            <span class="eyebrow">The Data Advantage</span>
+            <h2>Built on intelligence, not random guesses.</h2>
+            <p>
+              We processed thousands of historical admits and financial aid data to give you a realistic roadmap.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">12k+</div>
+              <div class="stat-label">Global Courses</div>
+              <p>Across US, UK, Canada, and Germany.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">₹240Cr</div>
+              <div class="stat-label">Scholarships Tracked</div>
+              <p>Matching your specific profile gaps.</p>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">92%</div>
+              <div class="stat-label">Prediction Accuracy</div>
+              <p>Based on crowdsourced admit data.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="section">
+        <div class="shell faq">
+          <div>
+            <span class="eyebrow">Questions</span>
+            <h2>Made for real application decisions.</h2>
+          </div>
+          <div class="faq-list">
+            <details open>
+              <summary>Does AbroadReady guarantee admission?</summary>
+              <p>No. It gives structured predictions and planning signals so you can make better choices.</p>
+            </details>
+            <details>
+              <summary>Can I use it before test scores are final?</summary>
+              <p>Yes. You can model multiple score and budget scenarios before choosing where to apply.</p>
+            </details>
+            <details>
+              <summary>Is my information private?</summary>
+              <p>Your workspace is private by default and used only to power your planning workflow.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer__inner">
+        <a class="brand" href="/">
+          <span class="brand__icon" aria-hidden="true"><span></span></span>
+          <span>AbroadReady</span>
+        </a>
+        <div class="footer__links">
+          <a href="/login">Login</a>
+          <a href="/register">Get Started</a>
+          <a href="#why">Why us?</a>
+          <a href="#features">Features</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/js/landing.js"></script>
+  </body>
+</html>

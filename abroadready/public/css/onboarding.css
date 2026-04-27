@@ -1,0 +1,48 @@
+.progress{
+  height:18px;
+  border-radius:999px;
+  overflow:hidden;
+  border:2px solid var(--border);
+  background:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.progress__bar{
+  height:100%;
+  width:0%;
+  background:repeating-linear-gradient(45deg, var(--primary), var(--primary) 12px, var(--primary2) 12px, var(--primary2) 24px);
+  transition:width .25s var(--ease);
+}
+.panel{display:none}
+.panel.active{display:block}
+.panel .h2{
+  display:inline-flex;
+  align-items:center;
+  min-height:50px;
+  padding:8px 14px;
+  border:2px solid var(--border);
+  border-radius:16px;
+  background:var(--primary2);
+  box-shadow:var(--shadow-sm);
+}
+#wizard{
+  background:
+    linear-gradient(90deg, rgba(23,20,13,.04) 1px, transparent 1px),
+    linear-gradient(rgba(23,20,13,.04) 1px, transparent 1px),
+    #fff;
+  background-size:34px 34px;
+}
+.upload{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  flex-wrap:wrap;
+  background:var(--card2);
+}
+.upload input{flex:1;min-width:220px}
+
+@media (max-width: 720px){
+  .row[style*="space-between"]{align-items:flex-start !important}
+  #wizard .row{flex-direction:column;align-items:stretch}
+  #wizard .row .row{width:100%}
+  #wizard .btn{width:100%}
+}

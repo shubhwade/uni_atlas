@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Finance • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/finance.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <h1 class="h1">Finance</h1>
+        <p class="muted">Loan calculator + lenders explorer (MVP).</p>
+        <div class="spacer"></div>
+
+        <section class="grid cols-2">
+          <div class="card pad">
+            <div class="h2">Loan calculator</div>
+            <div class="spacer"></div>
+            <div class="grid cols-2">
+              <div><label class="caption">Principal (INR)</label><input class="input" id="p" type="number" value="5000000" /></div>
+              <div><label class="caption">Rate (%)</label><input class="input" id="r" type="number" step="0.1" value="11.5" /></div>
+              <div><label class="caption">Tenure (months)</label><input class="input" id="n" type="number" value="120" /></div>
+              <div><label class="caption">Moratorium (months)</label><input class="input" id="m" type="number" value="18" /></div>
+            </div>
+            <div class="spacer"></div>
+            <button class="btn primary" id="calc" type="button">Calculate</button>
+            <div class="spacer"></div>
+            <div id="out" class="grid"></div>
+          </div>
+
+          <div class="card pad">
+            <div class="row" style="justify-content:space-between">
+              <div class="h2">Lenders</div>
+              <button class="btn sm" id="loadLenders" type="button">Refresh</button>
+            </div>
+            <div class="spacer"></div>
+            <div id="lenders" class="grid"></div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/finance.js"></script>
+  </body>
+</html>
+

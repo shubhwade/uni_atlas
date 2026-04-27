@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scholarships • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/scholarships.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Scholarship finder</h1>
+            <p class="muted">Filter or match to your profile.</p>
+          </div>
+          <button class="btn primary sm" id="matchBtn" type="button">Match to my profile</button>
+        </div>
+        <div class="spacer"></div>
+        <section class="card pad filters">
+          <input class="input" id="qCountry" placeholder="Country code (e.g., uk)" />
+          <input class="input" id="qDegree" placeholder="Degree (e.g., MS)" />
+          <input class="input" id="qField" placeholder="Field (e.g., CS)" />
+          <button class="btn" id="apply" type="button">Apply</button>
+        </section>
+        <div class="spacer"></div>
+        <section class="grid cols-3" id="grid"></section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/scholarships.js"></script>
+  </body>
+</html>
+

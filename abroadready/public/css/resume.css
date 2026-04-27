@@ -1,0 +1,60 @@
+.upload{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.upload input{flex:1}
+.resumeCard{display:grid;gap:10px}
+
+/* Detailed analysis styles */
+.analysis-grid { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; margin-top: 20px; }
+@media (max-width: 768px) { .analysis-grid { grid-template-columns: 1fr; } }
+
+.analysis-section { background: var(--bg); border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 16px; }
+.analysis-section h4 { margin: 0 0 12px; font-size: 14px; font-weight: 900; color: var(--text); text-transform: uppercase; letter-spacing: 0.05em; }
+
+.impact-badge { font-size: 10px; padding: 2px 6px; border-radius: 4px; font-weight: 800; text-transform: uppercase; margin-left: 6px; }
+.impact-high { background: #ffe2de; color: #d33d2e; border: 1px solid #d33d2e; }
+.impact-medium { background: #fff2c2; color: #d48b00; border: 1px solid #d48b00; }
+.impact-low { background: #e7fff3; color: #1e9b6c; border: 1px solid #1e9b6c; }
+
+.analysis-container { color: var(--text); }
+.analysis-header { background: #fff; border: 3px solid var(--border); border-radius: var(--radius-md); padding: 20px; box-shadow: 4px 4px 0 var(--border); margin-bottom: 24px; align-items: center; gap: 24px; }
+.score-card { background: var(--primary); border: 3px solid var(--border); padding: 16px; border-radius: 50%; width: 100px; height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 3px 3px 0 var(--border); flex-shrink: 0; }
+.score-value { font-size: 20px; font-weight: 900; line-height: 1; }
+.score-label { font-size: 8px; font-weight: 800; text-transform: uppercase; margin-top: 4px; text-align: center; }
+
+.header-details { display: flex; flex-direction: column; gap: 8px; }
+.info-pill { background: #fff; border: 2px solid var(--border); padding: 4px 10px; border-radius: 8px; font-size: 12px; box-shadow: 2px 2px 0 var(--border); margin: 2px; display: inline-flex; align-items: center; gap: 4px; }
+.info-pill strong { font-weight: 800; color: var(--muted2); font-size: 10px; text-transform: uppercase; }
+
+.analysis-body { display: flex; gap: 24px; margin-bottom: 24px; }
+.radar-section { width: 300px; flex-shrink: 0; display: flex; flex-direction: column; gap: 20px; }
+.feedback-section { flex: 1; display: flex; flex-direction: column; gap: 20px; }
+
+.radar-wrap { height: 260px; background: #fff; border: 2px solid var(--border); border-radius: var(--radius-sm); padding: 10px; }
+.skills-wrap { background: #fff; border: 2px solid var(--border); padding: 16px; border-radius: var(--radius-sm); }
+.skills-wrap h4 { margin-bottom: 12px; }
+
+.summary-box { background: #fffbe6; border-color: #f8cf2f; }
+.summary-box p { font-size: 14px; line-height: 1.6; margin: 0; }
+
+.tag { background: var(--bg); border: 1px solid var(--border); padding: 2px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; margin: 2px; }
+
+.info-item { margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px dashed rgba(33, 29, 18, 0.1); }
+.info-item:last-child { border-bottom: none; margin-bottom: 0; }
+.info-item strong { display: block; font-size: 14px; margin-bottom: 4px; }
+.info-item p { font-size: 12px; margin: 0; color: var(--muted); line-height: 1.4; }
+.info-item small { display: block; margin-top: 4px; font-weight: 700; color: var(--success); }
+
+.full-width { grid-column: 1 / -1; }
+.mt-1 { margin-top: 8px; }
+.mt-2 { margin-top: 24px; }
+
+@media (max-width: 900px) {
+  .analysis-body { flex-direction: column; }
+  .radar-section { width: 100%; }
+}
+
+.recommendation-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px dashed rgba(33, 29, 18, 0.1); }
+.recommendation-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.recommendation-point { font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.recommendation-detail { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+.recommendation-fix { font-size: 12px; color: var(--success); font-weight: 700; margin-top: 6px; padding: 6px; background: #e7fff3; border-radius: 8px; border: 1px solid var(--success); }
+

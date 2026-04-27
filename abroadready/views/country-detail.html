@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Country - AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/country-detail.css" />
+  </head>
+  <body>
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1" id="title">Country</h1>
+            <p class="muted" id="sub">Loading...</p>
+          </div>
+          <div class="row wrap">
+            <button class="btn sm" id="refreshCosts" type="button">Refresh living costs</button>
+            <a class="btn sm" id="earningLink" href="/earning">Earning</a>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="grid cols-2">
+          <div class="card pad" id="visa"></div>
+          <div class="card pad" id="costs"></div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="grid cols-2">
+          <div class="card pad" id="banks"></div>
+          <div class="card pad" id="jobs"></div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/country-detail.js"></script>
+  </body>
+</html>

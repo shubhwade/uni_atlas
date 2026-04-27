@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universities • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/universities.css" />
+  </head>
+  <body>
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">University explorer</h1>
+            <p class="muted">Filter and compare. Prices shown in INR where available.</p>
+          </div>
+          <a class="btn sm" href="/countries">Country guides</a>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="card pad filters">
+          <div class="row wrap" style="gap:1rem;width:100%">
+            <input class="input" id="search" placeholder="Search university or city…" style="flex:2" />
+            <select class="select" id="country" style="flex:1">
+              <option value="">All countries</option>
+            </select>
+            <select class="select" id="sort" style="flex:1">
+              <option value="qsRanking">Sort: QS Rank</option>
+              <option value="tuition">Sort: Tuition (min)</option>
+              <option value="placement">Sort: Placement</option>
+            </select>
+            <button class="btn" id="apply" type="button">Apply</button>
+          </div>
+          <div class="spacer" style="height:10px"></div>
+          <label class="row" style="align-items:center;gap:0.5rem;cursor:pointer">
+            <input type="checkbox" id="globalSearch" />
+            <span class="caption">Search all universities in the world (Global API)</span>
+          </label>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section>
+          <div id="grid" class="grid cols-3"></div>
+          <div class="spacer"></div>
+          <div class="row" style="justify-content:space-between">
+            <button class="btn sm" id="prev" type="button">Prev</button>
+            <div class="caption muted" id="pageInfo"></div>
+            <button class="btn sm" id="next" type="button">Next</button>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/universities.js"></script>
+  </body>
+</html>
+

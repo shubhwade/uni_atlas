@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Resumes • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/resume.css" />
+  </head>
+  <body data-requires-auth="1">
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <div class="row wrap" style="justify-content:space-between;align-items:flex-end">
+          <div>
+            <h1 class="h1">Resume analyzer</h1>
+            <p class="muted">Upload a PDF. We parse via Affinda + score via GPT‑4o.</p>
+          </div>
+          <a class="btn sm" href="/profile">Profile</a>
+        </div>
+
+        <div class="spacer"></div>
+
+        <section class="card pad upload">
+          <input id="file" type="file" accept="application/pdf" />
+          <button class="btn primary" id="upload">Upload</button>
+          <div class="caption muted" id="status"></div>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section class="card pad">
+          <div class="row" style="justify-content:space-between">
+            <div class="h2">My resumes</div>
+            <button class="btn sm" id="refresh" type="button">Refresh</button>
+          </div>
+          <div class="spacer"></div>
+          <div id="list" class="grid"></div>
+        </section>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/resume.js"></script>
+  </body>
+</html>
+

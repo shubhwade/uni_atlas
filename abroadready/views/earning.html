@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Earning • AbroadReady</title>
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/earning.css" />
+  </head>
+  <body>
+    <div id="appNav"></div>
+    <main class="page">
+      <div class="container">
+        <h1 class="h1">Earning resources</h1>
+        <p class="muted">Browse earning options by country (MVP).</p>
+        <div class="spacer"></div>
+        <section class="card pad">
+          <div class="row wrap">
+            <input class="input" id="code" placeholder="country code (e.g., usa)" />
+            <button class="btn" id="load" type="button">Load</button>
+          </div>
+        </section>
+        <div class="spacer"></div>
+        <section id="grid" class="grid cols-3"></section>
+      </div>
+    </main>
+    <script src="/js/global.js"></script>
+    <script src="/js/earning.js"></script>
+  </body>
+</html>
+

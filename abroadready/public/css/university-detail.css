@@ -1,0 +1,8 @@
+.courseRow{
+  padding:13px;
+  border-radius:16px;
+  border:2px solid var(--border);
+  background:#fff;
+  box-shadow:3px 3px 0 var(--border);
+}
+.courseRow:hover{background:#fff7cc}

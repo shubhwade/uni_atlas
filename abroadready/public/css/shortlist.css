@@ -1,0 +1,11 @@
+.kanban{display:flex;gap:14px;align-items:flex-start;overflow:auto;padding-bottom:10px}
+.col{min-width:270px;max-width:330px;flex:0 0 auto}
+.colHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.colBody{display:grid;gap:10px;min-height:120px}
+.kcard{
+  padding:13px;
+  border-radius:18px;
+  border:2px solid var(--border);
+  background:#fff;
+  box-shadow:3px 3px 0 var(--border);
+}
