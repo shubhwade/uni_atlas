@@ -37,8 +37,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+const staticOptions = {
+  maxAge: process.env.NODE_ENV === "production" ? "1d" : 0,
+  etag: true,
+};
+app.use(express.static(path.join(__dirname, "public"), staticOptions));
+app.use("/uploads", express.static(path.join(__dirname, "uploads"), staticOptions));
 
 function sendView(res, fileName) {
   res.sendFile(path.join(__dirname, "views", fileName));
@@ -164,8 +168,10 @@ app.get(
     return passport.authenticate("google", { failureRedirect: "/login?error=google_failed" })(req, res, next);
   },
   (req, res) => {
+    const db = require("./database/db").getDB();
+    const user = db.prepare("SELECT is_admin FROM users WHERE id = ?").get(req.user.id);
     req.session.userId = req.user.id;
-    req.session.isAdmin = 0;
+    req.session.isAdmin = user?.is_admin || 0;
     return res.redirect("/dashboard");
   },
 );

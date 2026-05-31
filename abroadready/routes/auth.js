@@ -68,10 +68,11 @@ router.post("/register", (req, res) => {
     // Hash password
     const hash = bcrypt.hashSync(password, 10);
     const now = new Date().toISOString();
+    const isAdmin = (process.env.ADMIN_EMAIL && email === process.env.ADMIN_EMAIL.toLowerCase()) ? 1 : 0;
     
     const info = db
-      .prepare("INSERT INTO users (email, name, password_hash, created_at, updated_at) VALUES (?,?,?,?,?)")
-      .run(email, name, hash, now, now);
+      .prepare("INSERT INTO users (email, name, password_hash, is_admin, created_at, updated_at) VALUES (?,?,?,?,?,?)")
+      .run(email, name, hash, isAdmin, now, now);
     const userId = Number(info.lastInsertRowid);
 
     db.prepare("INSERT OR IGNORE INTO student_profiles (user_id) VALUES (?)").run(userId);
@@ -116,15 +117,15 @@ router.post("/login", (req, res) => {
     if (!passwordCheck.valid) return res.status(400).json({ error: passwordCheck.error });
     const password = passwordCheck.value;
 
-    const user = db.prepare("SELECT id, password_hash, name, email FROM users WHERE email = ?").get(email);
+    const user = db.prepare("SELECT id, password_hash, name, email, is_admin FROM users WHERE email = ?").get(email);
     if (!user || !user.password_hash) return res.status(401).json({ error: "Invalid email or password" });
 
     const ok = bcrypt.compareSync(password, user.password_hash);
     if (!ok) return res.status(401).json({ error: "Invalid email or password" });
 
     req.session.userId = user.id;
-    req.session.isAdmin = 0;
-    return res.json({ ok: true, user: { id: user.id, email: user.email, name: user.name } });
+    req.session.isAdmin = user.is_admin || 0;
+    return res.json({ ok: true, user: { id: user.id, email: user.email, name: user.name, is_admin: user.is_admin } });
   } catch (err) {
     console.error("Login error:", err);
     return res.status(500).json({ error: "Login failed. Please try again." });
@@ -139,7 +140,7 @@ router.get("/me", (req, res) => {
   if (!req.session?.userId) return res.status(401).json({ error: "Unauthorized" });
   const db = getDB();
   const user = db
-    .prepare("SELECT id, email, name, avatar, onboarding_done, subscription_tier FROM users WHERE id = ?")
+    .prepare("SELECT id, email, name, avatar, onboarding_done, subscription_tier, is_admin FROM users WHERE id = ?")
     .get(req.session.userId);
   return res.json({ ok: true, user });
 });
@@ -170,11 +171,11 @@ router.get("/magic-link/verify", (req, res) => {
   const payload = verifyMagicToken(token);
   if (!payload) return res.status(400).send("Invalid or expired token");
 
-  const user = db.prepare("SELECT id FROM users WHERE email = ?").get(payload.email);
+  const user = db.prepare("SELECT id, is_admin FROM users WHERE email = ?").get(payload.email);
   if (!user) return res.status(404).send("Account not found");
 
   req.session.userId = user.id;
-  req.session.isAdmin = 0;
+  req.session.isAdmin = user.is_admin || 0;
   return res.redirect("/dashboard");
 });
 
@@ -193,7 +194,7 @@ router.get("/verify-email", (req, res) => {
     const payload = verifyMagicToken(token);
     if (!payload) return res.status(400).send("Invalid or expired verification link");
 
-    const user = db.prepare("SELECT id, email_verified FROM users WHERE email = ?").get(payload.email);
+    const user = db.prepare("SELECT id, email_verified, is_admin FROM users WHERE email = ?").get(payload.email);
     if (!user) return res.status(404).send("Account not found");
 
     // Mark email as verified
@@ -201,7 +202,7 @@ router.get("/verify-email", (req, res) => {
 
     // Log user in and redirect to dashboard
     req.session.userId = user.id;
-    req.session.isAdmin = 0;
+    req.session.isAdmin = user.is_admin || 0;
     return res.redirect("/dashboard?verified=1");
   } catch (err) {
     console.error("Email verification error:", err);

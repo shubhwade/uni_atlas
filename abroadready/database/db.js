@@ -8,8 +8,21 @@ function ensureDir(filePath) {
 }
 
 function getDbPath() {
+  const isVercel = process.env.VERCEL || process.env.VERCEL_ENV;
   const raw = process.env.DB_PATH || "./database/abroadready.db";
-  return path.isAbsolute(raw) ? raw : path.join(__dirname, "..", raw);
+  const sourcePath = path.isAbsolute(raw) ? raw : path.join(__dirname, "..", raw);
+  
+  if (isVercel) {
+    const tmpPath = path.join("/tmp", "abroadready.db");
+    if (!fs.existsSync(tmpPath) && fs.existsSync(sourcePath)) {
+      fs.copyFileSync(sourcePath, tmpPath);
+      // Also copy WAL and SHM if they exist to prevent corruption
+      if (fs.existsSync(sourcePath + "-wal")) fs.copyFileSync(sourcePath + "-wal", tmpPath + "-wal");
+      if (fs.existsSync(sourcePath + "-shm")) fs.copyFileSync(sourcePath + "-shm", tmpPath + "-shm");
+    }
+    return tmpPath;
+  }
+  return sourcePath;
 }
 
 function loadSchemaSql() {
@@ -29,6 +42,7 @@ function ensureColumn(db, table, column, definition) {
 function runMigrations(db) {
   ensureColumn(db, "resumes", "updated_at", "TEXT");
   ensureColumn(db, "portfolios", "updated_at", "TEXT");
+  ensureColumn(db, "users", "is_admin", "INTEGER DEFAULT 0");
 }
 
 function getDB() {

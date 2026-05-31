@@ -2,15 +2,15 @@
   "version": 2,
   "functions": {
     "api/index.js": {
-      "runtime": "@vercel/node@2.1.0",
       "maxDuration": 30,
-      "memory": 1024
+      "memory": 1024,
+      "includeFiles": "abroadready/database/**"
     }
   },
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/api"
+      "destination": "/api/index.js"
     }
   ]
 }

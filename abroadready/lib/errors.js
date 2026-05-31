@@ -32,7 +32,8 @@ function asyncHandler(fn) {
  * Express error handling middleware
  * Must be the last middleware defined
  */
-function errorHandler(err, req, res) {
+// eslint-disable-next-line no-unused-vars
+function errorHandler(err, req, res, next) {
   logger.error('Request error', {
     method: req.method,
     path: req.path,

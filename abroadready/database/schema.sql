@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
   email_verified INTEGER DEFAULT 0,
   onboarding_done INTEGER DEFAULT 0,
   subscription_tier TEXT DEFAULT 'free',
+  is_admin INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now'))
 );

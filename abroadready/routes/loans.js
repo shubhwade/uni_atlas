@@ -73,13 +73,20 @@ router.put("/:id", (req, res) => {
   const existing = db.prepare("SELECT * FROM loan_trackers WHERE id=? AND user_id=?").get(id, req.session.userId);
   if (!existing) return res.status(404).json({ error: "Not found" });
 
-  const allowed = Object.keys(existing).filter((k) => !["id", "user_id", "created_at", "updated_at"].includes(k));
-  const updates = Object.keys(req.body || {}).filter((k) => allowed.includes(k));
+  const editableFields = [
+    "lender_name", "product_name", "principal_inr", "interest_rate", "rate_type",
+    "disbursed_date", "first_emi_date", "tenure_months", "collateral_type",
+    "collateral_value_inr", "emi_amount_monthly", "status", "notes"
+  ];
+  const updates = Object.keys(req.body || {}).filter((k) => editableFields.includes(k));
   if (!updates.length) return res.json({ ok: true });
 
   const setSql = updates.map((k) => `${k}=@${k}`).join(", ");
+  const cleanBody = {};
+  for (const k of updates) cleanBody[k] = req.body[k];
+
   db.prepare(`UPDATE loan_trackers SET ${setSql}, updated_at=datetime('now') WHERE id=@id AND user_id=@user_id`).run({
-    ...req.body,
+    ...cleanBody,
     id,
     user_id: req.session.userId,
   });
