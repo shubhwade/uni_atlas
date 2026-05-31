@@ -87,7 +87,8 @@ async function uploadFile(localPath, folder = "abroadready") {
 
 async function uploadFromBuffer(buffer, filename, folder = "abroadready") {
   // For buffers, we'll need to write to a temporary file first
-  const tempPath = path.join(__dirname, "..", "temp", filename);
+  const os = require("os");
+  const tempPath = path.join(os.tmpdir(), "abroadready_uploads", filename);
 
   // Ensure temp directory exists
   const tempDir = path.dirname(tempPath);
