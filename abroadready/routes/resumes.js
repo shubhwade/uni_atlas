@@ -9,8 +9,15 @@ const { analyzeResume } = require("../lib/resumeAnalyzer");
 
 const router = express.Router();
 
+const os = require("os");
+const isVercel = process.env.VERCEL || process.env.VERCEL_ENV;
+const uploadDir = isVercel ? path.join(os.tmpdir(), "abroadready_uploads") : "uploads/";
+if (!fs.existsSync(uploadDir)) {
+  try { fs.mkdirSync(uploadDir, { recursive: true }); } catch (e) {}
+}
+
 const upload = multer({
-  dest: "uploads/",
+  dest: uploadDir,
   limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype === "application/pdf") return cb(null, true);
