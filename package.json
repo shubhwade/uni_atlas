@@ -6,7 +6,6 @@
     "node": ">=18 <25"
   },
   "scripts": {
-    "build": "echo \"No build required\"",
     "start": "node abroadready/server.js",
     "dev": "cd abroadready && nodemon server.js",
     "lint": "eslint . --ext .js",
