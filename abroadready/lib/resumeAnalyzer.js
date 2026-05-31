@@ -1,15 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 const fetch = require("node-fetch");
-// Polyfill DOMMatrix for pdf-parse in Node 18+ environments like Vercel
-if (typeof global.DOMMatrix === "undefined") {
-  global.DOMMatrix = class DOMMatrix {
-    constructor() { this.a = 1; this.b = 0; this.c = 0; this.d = 1; this.e = 0; this.f = 0; }
-  };
-}
-if (typeof globalThis.DOMMatrix === "undefined") {
-  globalThis.DOMMatrix = global.DOMMatrix;
-}
 const { getDB } = require("../database/db");
 const cloudinary = require("./cloudinary");
 const affinda = require("./affinda");
