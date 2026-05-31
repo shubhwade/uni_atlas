@@ -64,7 +64,9 @@
       if (!btn) return;
       try {
         await saveStep();
-      } catch {}
+      } catch (error) {
+        console.warn("Tab save skipped:", error);
+      }
       step = Number(btn.dataset.step);
       setUI();
     });

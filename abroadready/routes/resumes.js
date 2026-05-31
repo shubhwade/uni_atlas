@@ -4,7 +4,7 @@ const path = require("path");
 const multer = require("multer");
 
 const { getDB } = require("../database/db");
-const { uploadFile, deleteFile } = require("../lib/cloudinary");
+const { uploadFile } = require("../lib/cloudinary");
 const { analyzeResume } = require("../lib/resumeAnalyzer");
 
 const router = express.Router();

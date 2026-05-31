@@ -32,7 +32,7 @@ function asyncHandler(fn) {
  * Express error handling middleware
  * Must be the last middleware defined
  */
-function errorHandler(err, req, res, next) {
+function errorHandler(err, req, res) {
   logger.error('Request error', {
     method: req.method,
     path: req.path,
@@ -43,24 +43,19 @@ function errorHandler(err, req, res, next) {
   // Default error response
   let statusCode = 500;
   let message = 'Server error. Please try again later.';
-  let isOperational = false;
 
   if (err instanceof AppError) {
     statusCode = err.statusCode;
     message = err.message;
-    isOperational = true;
   } else if (err.name === 'ValidationError') {
     statusCode = 400;
     message = err.message;
-    isOperational = true;
   } else if (err.name === 'UnauthorizedError') {
     statusCode = 401;
     message = 'Unauthorized';
-    isOperational = true;
   } else if (err.name === 'ForbiddenError') {
     statusCode = 403;
     message = 'Forbidden';
-    isOperational = true;
   }
 
   // For API routes, return JSON

@@ -133,7 +133,7 @@ async function analyzeResume(text) {
     return {
       name: text.split('\n')[0] || "",
       email: text.match(/[\w.-]+@[\w.-]+\.\w+/)?.[0] || "",
-      phone: text.match(/[\+]?[1-9][\d]{0,15}/)?.[0] || "",
+      phone: text.match(/\+?[1-9][\d]{0,15}/)?.[0] || "",
       skills: [],
       experience_years: 0,
       education: "",

@@ -12,3 +12,6 @@ build/
 .idea/
 *.swp
 *.swo
+*.db-shm
+*.db-wal
+*.pem

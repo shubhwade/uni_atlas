@@ -453,7 +453,25 @@ POST /auth/password-reset
 - [ ] Error handling tested
 - [ ] Logging verified
 
+### Local development
+
+- Install dependencies from the repository root:
+  ```bash
+  npm install
+  ```
+- Copy environment vars into the nested app folder:
+  ```bash
+  cp abroadready/.env.example abroadready/.env
+  ```
+- Start the app locally:
+  ```bash
+  npm start
+  ```
+- The local server listens on `http://localhost:3000` by default.
+
 ### Deploy to Vercel
+
+This repository is configured for Vercel using `vercel.json` and a serverless Express app entrypoint at `api/index.js`. On Vercel, incoming requests are routed through `/api`, and the same `abroadready/server.js` Express app is reused.
 
 ```bash
 # 1. Install Vercel CLI

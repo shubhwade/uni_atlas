@@ -68,18 +68,6 @@
     overlay.classList.add("open");
   }
 
-  // Helper: Escape HTML special characters (prevent XSS)
-  function escapeHTML(text) {
-    const map = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;'
-    };
-    return String(text || '').replace(/[&<>"']/g, m => map[m]);
-  }
-
   function closeModal() {
     const overlay = document.getElementById(modalOverlayId);
     if (overlay) overlay.classList.remove("open");

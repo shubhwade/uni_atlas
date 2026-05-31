@@ -2,8 +2,40 @@
   "name": "uni-atlas",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18 <25"
+  },
   "scripts": {
-    "build": "cd abroadready && npm install --legacy-peer-deps 2>/dev/null || true",
-    "start": "node abroadready/server.js"
+    "build": "echo \"No build required\"",
+    "start": "node abroadready/server.js",
+    "dev": "cd abroadready && nodemon server.js",
+    "lint": "eslint . --ext .js",
+    "type-check": "echo \"No TypeScript files found\""
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^12.9.0",
+    "cloudinary": "^2.0.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "cookie-session": "^2.0.0",
+    "isomorphic-dompurify": "^1.11.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^4.2.1",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^8.0.10",
+    "openai": "^4.28.0",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "pdf-parse": "^2.4.5",
+    "uuid": "^11.1.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-import": "^2.29.1",
+    "nodemon": "^3.1.0"
   }
 }

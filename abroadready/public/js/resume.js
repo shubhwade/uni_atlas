@@ -92,7 +92,6 @@
           return;
         }
 
-        const parsed = data.resume.parsed_data ? JSON.parse(data.resume.parsed_data) : {};
         const ex = ai.extractedData || {};
         const score = r.ai_score_overall ? `${Math.round(r.ai_score_overall)}/100` : "—";
         
