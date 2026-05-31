@@ -6,10 +6,16 @@
 const fs = require('fs');
 const path = require('path');
 
-// Create logs directory if it doesn't exist
+const isVercel = process.env.VERCEL || process.env.VERCEL_ENV;
 const logsDir = path.join(__dirname, '..', 'logs');
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+
+// Only create logs directory if we're not on Vercel
+if (!isVercel && !fs.existsSync(logsDir)) {
+  try {
+    fs.mkdirSync(logsDir, { recursive: true });
+  } catch (err) {
+    console.error("Failed to create logs dir:", err);
+  }
 }
 
 const LOG_LEVELS = {
@@ -46,12 +52,14 @@ class Logger {
       console.log(formatted);
     }
 
-    // File output (always)
-    try {
-      const logFile = path.join(logsDir, `${this.name}.log`);
-      fs.appendFileSync(logFile, formatted + '\n', 'utf8');
-    } catch (err) {
-      console.error('Failed to write to log file:', err);
+    // File output (only if not on Vercel)
+    if (!isVercel) {
+      try {
+        const logFile = path.join(logsDir, `${this.name}.log`);
+        fs.appendFileSync(logFile, formatted + '\n', 'utf8');
+      } catch (err) {
+        console.error('Failed to write to log file:', err);
+      }
     }
   }
 
