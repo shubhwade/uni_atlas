@@ -16,6 +16,7 @@ const { getLogger } = require("./lib/logger");
 const app = express();
 
 app.disable("x-powered-by");
+app.enable("trust proxy");
 app.use(securityHeaders);
 // Rate limit: 1000 requests per 15 minutes per IP (generous for dev/personal use)
 app.use(rateLimitMiddleware(1000, 15 * 60 * 1000));
@@ -69,7 +70,8 @@ if (process.env.GOOGLE_CLIENT_ID && process.env.GOOGLE_CLIENT_SECRET) {
       {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.GOOGLE_CALLBACK_URL || "http://localhost:3000/auth/google/callback",
+        callbackURL: process.env.GOOGLE_CALLBACK_URL || "/auth/google/callback",
+        proxy: true
       },
       (accessToken, refreshToken, profile, done) => {
         try {

@@ -155,7 +155,7 @@ router.post("/magic-link", async (req, res) => {
 
   try {
     const token = makeMagicToken(email, 15);
-    const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+    const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
     const link = `${baseUrl}/auth/magic-link/verify?token=${encodeURIComponent(token)}`;
     await sendMagicLink(email, link);
     return res.json({ ok: true });
@@ -256,7 +256,7 @@ router.post("/password-reset-request", async (req, res) => {
     if (user) {
       try {
         const token = makeMagicToken(email, 60); // 1 hour for password reset
-        const baseUrl = process.env.BASE_URL || `http://localhost:${process.env.PORT || 3000}`;
+        const baseUrl = process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
         const link = `${baseUrl}/auth/password-reset?token=${encodeURIComponent(token)}`;
         await sendMagicLink(email, link);
       } catch (err) {
