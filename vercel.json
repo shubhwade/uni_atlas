@@ -2,6 +2,7 @@
   "version": 2,
   "functions": {
     "api/index.js": {
+      "runtime": "@vercel/node",
       "maxDuration": 30,
       "memory": 1024,
       "includeFiles": "abroadready/database/**"

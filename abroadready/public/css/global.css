@@ -262,6 +262,8 @@ table.table tr:hover td{background:#fff9dc}
   .nav{height:auto;min-height:72px;align-items:flex-start;flex-direction:column;padding:14px 0}
   .nav-right{width:100%;flex-wrap:wrap}
   .nav-right .btn,.nav-pill{flex:1 1 auto}
+  .grid.cols-4{grid-template-columns:1fr}
+  .grid.cols-3{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
