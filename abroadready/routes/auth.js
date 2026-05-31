@@ -155,7 +155,7 @@ router.post("/magic-link", async (req, res) => {
 
   try {
     const token = makeMagicToken(email, 15);
-    const baseUrl = (process.env.VERCEL && (process.env.BASE_URL || "").includes("localhost"))
+    const baseUrl = (process.env.NODE_ENV === "production" && (process.env.BASE_URL || "").includes("localhost"))
       ? `${req.protocol}://${req.get("host")}`
       : (process.env.BASE_URL || `${req.protocol}://${req.get("host")}`);
     const link = `${baseUrl}/auth/magic-link/verify?token=${encodeURIComponent(token)}`;
