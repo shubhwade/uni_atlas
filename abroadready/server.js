@@ -34,6 +34,17 @@ app.use(
   }),
 );
 
+// Patch for Passport 0.6.0+ which requires regenerate/save methods not provided by cookie-session
+app.use((req, res, next) => {
+  if (req.session && !req.session.regenerate) {
+    req.session.regenerate = (cb) => cb();
+  }
+  if (req.session && !req.session.save) {
+    req.session.save = (cb) => cb();
+  }
+  next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
